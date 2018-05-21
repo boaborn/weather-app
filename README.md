@@ -1,7 +1,7 @@
 # weather-app
 
-Redux Promise 
-Redux Middleware
-Weather Api
-Google Map Api
-Ajax
+Redux Promise <br/>
+Redux Middleware <br/>
+Weather Api <br/>
+Google Map Api <br/>
+Ajax <br/>
