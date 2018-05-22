@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Chart from '../components/chart'
-
+import GoogleMap from '../components/google.map'
 class WeatherList extends Component {
   renderWeather(cityData) {
     const name = cityData.city.name
     const temps = cityData.list.map(weather => weather.main.temp - 273.15)
     const pressure = cityData.list.map(weather => weather.main.pressure)
     const humidities = cityData.list.map(weather => weather.main.humidity)
+    // find coord object then grab the lon and lat property and sign it
+    const {lon, lat} = cityData.city.coord
+
     return (
-      <tr className="col-xs-12" key={ name }>
-        <td className="col-xs-2">{ name }</td>
-        <td className="col-xs-3"><Chart data={ temps } color="orange" units="C" /></td>
-        <td className="col-xs-3"><Chart data={ pressure } color="Green" units="hPa" /></td>
-        <td className="col-xs-3"><Chart data={ humidities } color="Blue" units="%" /></td>
+      <tr key={ name }>
+        <td>{ <GoogleMap lon={ lon } lat={ lat }/> }</td>
+        <td><Chart data={ temps } color="orange" units="C" /></td>
+        <td><Chart data={ pressure } color="Green" units="hPa" /></td>
+        <td><Chart data={ humidities } color="Blue" units="%" /></td>
       </tr>
     )
   }
@@ -22,11 +25,11 @@ class WeatherList extends Component {
     return (
       <table className="table table-hover">
         <thead>
-          <tr className="col-xs-12">
-            <th className="col-xs-2">City</th>
-            <th className="col-xs-3">Temperature (C)</th>
-            <th className="col-xs-3">Pressure (hPa)</th>
-            <th className="col-xs-3">Humidity (%)</th>
+          <tr>
+            <th>City</th>
+            <th>Temperature (C)</th>
+            <th>Pressure (hPa)</th>
+            <th>Humidity (%)</th>
           </tr>
         </thead>
         <tbody>
