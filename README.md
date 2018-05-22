@@ -1,5 +1,5 @@
 # weather-app
-![alt text](relative/image/weather_app.png)
+![alt text](./image/weather_app.png)
 
 Redux Promise <br/>
 Redux Middleware <br/>
